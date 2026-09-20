@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 5s
+scrape_configs:
+  - job_name: job-service
+    metrics_path: /actuator/prometheus
+    static_configs: [{targets: ['job-service:8081']}]
+  - job_name: worker-1
+    metrics_path: /actuator/prometheus
+    static_configs: [{targets: ['worker-1:8082']}]
+  - job_name: worker-2
+    metrics_path: /actuator/prometheus
+    static_configs: [{targets: ['worker-2:8082']}]

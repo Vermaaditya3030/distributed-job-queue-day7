@@ -1,0 +1,1 @@
+package com.aditya.notification; import org.springframework.web.bind.annotation.*; import java.util.*; @RestController @RequestMapping("/api/notifications") public class NotificationController{@GetMapping public Map<String,String> status(){return Map.of("service","notification-service","status","READY");}}

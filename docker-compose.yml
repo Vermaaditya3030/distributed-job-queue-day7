@@ -1,0 +1,28 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+  job-service:
+    build: ./job-service
+    depends_on: [redis]
+    ports: ["8081:8081"]
+  worker-1:
+    build: ./worker-service
+    depends_on: [redis]
+  worker-2:
+    build: ./worker-service
+    depends_on: [redis]
+  notification-service:
+    build: ./notification-service
+    ports: ["8083:8083"]
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    ports: ["9090:9090"]
+    volumes: ["./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"]
+  grafana:
+    image: grafana/grafana:11.2.2
+    ports: ["3000:3000"]
+    depends_on: [prometheus]
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
