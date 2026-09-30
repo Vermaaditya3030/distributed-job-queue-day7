@@ -58,6 +58,6 @@ git init
 git add .
 git commit -m "feat: build distributed job queue"
 git branch -M main
-git remote add origin git@github.com:YOUR_USERNAME/distributed-job-queue.git
+git remote add origin git@github.com:Vermaaditya3030/distributed-job-queue.git
 git push -u origin main
 ```
